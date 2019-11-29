@@ -62,7 +62,7 @@ x.on("click", function(){
 
 ### Shiny Example
 
-```{r}
+```{r eval = FALSE}
 library(shiny)
 library(magrittr)
 ui <- function(request){
