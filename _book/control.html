@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 Control loops | JS 4 Shiny - Field Notes</title>
+  <meta name="description" content="Oui." />
+  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 Control loops | JS 4 Shiny - Field Notes" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Oui." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Control loops | JS 4 Shiny - Field Notes" />
+  
+  <meta name="twitter:description" content="Oui." />
+  
+
+<meta name="author" content="Colin Fay" />
+
+
+<meta name="date" content="2019-11-29" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="intro.html">
+<link rel="next" href="js-in-shiny.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">JS 4 Shiny</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Field Notes on JavaScript for Shiny Users</a><ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#about-this-bookdown"><i class="fa fa-check"></i><b>0.1</b> About this bookdown</a></li>
+<li><a href="index.html#installing-bubble">Installing <code>{bubble}</code></a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> A quick Intro to Base objects</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#launch-a-repl"><i class="fa fa-check"></i><b>1.1</b> Launch a REPL</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#assignment"><i class="fa fa-check"></i><b>1.2</b> Assignment</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#scalar-objects"><i class="fa fa-check"></i><b>1.3</b> Scalar objects</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="intro.html"><a href="intro.html#numbers"><i class="fa fa-check"></i><b>1.3.1</b> Numbers</a></li>
+<li class="chapter" data-level="1.3.2" data-path="intro.html"><a href="intro.html#character"><i class="fa fa-check"></i><b>1.3.2</b> Character</a></li>
+<li class="chapter" data-level="1.3.3" data-path="intro.html"><a href="intro.html#boolean"><i class="fa fa-check"></i><b>1.3.3</b> Boolean</a></li>
+<li class="chapter" data-level="1.3.4" data-path="intro.html"><a href="intro.html#null-undefined"><i class="fa fa-check"></i><b>1.3.4</b> Null &amp; undefined</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#array"><i class="fa fa-check"></i><b>1.4</b> Array</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="intro.html"><a href="intro.html#create"><i class="fa fa-check"></i><b>1.4.1</b> Create</a></li>
+<li class="chapter" data-level="1.4.2" data-path="intro.html"><a href="intro.html#select"><i class="fa fa-check"></i><b>1.4.2</b> Select</a></li>
+<li class="chapter" data-level="1.4.3" data-path="intro.html"><a href="intro.html#manipulate"><i class="fa fa-check"></i><b>1.4.3</b> Manipulate</a></li>
+<li class="chapter" data-level="1.4.4" data-path="intro.html"><a href="intro.html#transform"><i class="fa fa-check"></i><b>1.4.4</b> Transform</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#objects"><i class="fa fa-check"></i><b>1.5</b> Objects</a></li>
+<li class="chapter" data-level="1.6" data-path="intro.html"><a href="intro.html#function"><i class="fa fa-check"></i><b>1.6</b> Function</a></li>
+<li class="chapter" data-level="1.7" data-path="intro.html"><a href="intro.html#typeof"><i class="fa fa-check"></i><b>1.7</b> <code>typeof</code></a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="control.html"><a href="control.html"><i class="fa fa-check"></i><b>2</b> Control loops</a><ul>
+<li class="chapter" data-level="2.1" data-path="control.html"><a href="control.html#for-loop"><i class="fa fa-check"></i><b>2.1</b> For loop</a></li>
+<li class="chapter" data-level="2.2" data-path="control.html"><a href="control.html#while-loop"><i class="fa fa-check"></i><b>2.2</b> While loop</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="js-in-shiny.html"><a href="js-in-shiny.html"><i class="fa fa-check"></i><b>3</b> JS in Shiny</a><ul>
+<li class="chapter" data-level="3.1" data-path="js-in-shiny.html"><a href="js-in-shiny.html#add-js-to-shiny"><i class="fa fa-check"></i><b>3.1</b> Add JS to Shiny</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="js-in-shiny.html"><a href="js-in-shiny.html#with-golem"><i class="fa fa-check"></i><b>3.1.1</b> With <code>{golem}</code></a></li>
+<li class="chapter" data-level="3.1.2" data-path="js-in-shiny.html"><a href="js-in-shiny.html#link-in-your-app"><i class="fa fa-check"></i><b>3.1.2</b> Link in your app</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="js-in-shiny.html"><a href="js-in-shiny.html#the-javascript-shiny-object"><i class="fa fa-check"></i><b>3.2</b> The JavaScript Shiny Object</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="js-in-shiny.html"><a href="js-in-shiny.html#set-the-value-of-an-input-from-javascript"><i class="fa fa-check"></i><b>3.2.1</b> Set the value of an input from JavaScript</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="js-in-shiny.html"><a href="js-in-shiny.html#shiny-js-handlers"><i class="fa fa-check"></i><b>3.3</b> Shiny JS Handlers</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="dom-dom-events.html"><a href="dom-dom-events.html"><i class="fa fa-check"></i><b>4</b> DOM &amp; DOM Events</a><ul>
+<li class="chapter" data-level="4.1" data-path="dom-dom-events.html"><a href="dom-dom-events.html#dom-elements"><i class="fa fa-check"></i><b>4.1</b> DOM elements</a></li>
+<li class="chapter" data-level="4.2" data-path="dom-dom-events.html"><a href="dom-dom-events.html#dom-elements-1"><i class="fa fa-check"></i><b>4.2</b> DOM elements</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="dom-dom-events.html"><a href="dom-dom-events.html#query-elements"><i class="fa fa-check"></i><b>4.2.1</b> Query elements</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="dom-dom-events.html"><a href="dom-dom-events.html#dom-events"><i class="fa fa-check"></i><b>4.3</b> DOM events</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="dom-dom-events.html"><a href="dom-dom-events.html#browser-events"><i class="fa fa-check"></i><b>4.3.1</b> Browser Events</a></li>
+<li class="chapter" data-level="4.3.2" data-path="dom-dom-events.html"><a href="dom-dom-events.html#shiny-events"><i class="fa fa-check"></i><b>4.3.2</b> Shiny events</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="dom-dom-events.html"><a href="dom-dom-events.html#add-event-listeners"><i class="fa fa-check"></i><b>4.4</b> Add Event Listeners</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="dom-dom-events.html"><a href="dom-dom-events.html#inside-tags"><i class="fa fa-check"></i><b>4.4.1</b> Inside tags</a></li>
+<li class="chapter" data-level="4.4.2" data-path="dom-dom-events.html"><a href="dom-dom-events.html#with-js"><i class="fa fa-check"></i><b>4.4.2</b> With JS</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="dom-dom-events.html"><a href="dom-dom-events.html#example-in-shiny"><i class="fa fa-check"></i><b>4.5</b> Example in Shiny</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="jquery.html"><a href="jquery.html"><i class="fa fa-check"></i><b>5</b> jQuery</a><ul>
+<li class="chapter" data-level="5.1" data-path="jquery.html"><a href="jquery.html#about"><i class="fa fa-check"></i><b>5.1</b> About</a></li>
+<li class="chapter" data-level="5.2" data-path="jquery.html"><a href="jquery.html#selection"><i class="fa fa-check"></i><b>5.2</b> Selection</a></li>
+<li class="chapter" data-level="5.3" data-path="jquery.html"><a href="jquery.html#event"><i class="fa fa-check"></i><b>5.3</b> Event</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="jquery.html"><a href="jquery.html#add-event"><i class="fa fa-check"></i><b>5.3.1</b> Add event</a></li>
+<li class="chapter" data-level="5.3.2" data-path="jquery.html"><a href="jquery.html#shiny-example"><i class="fa fa-check"></i><b>5.3.2</b> Shiny Example</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="this-and-attributes.html"><a href="this-and-attributes.html"><i class="fa fa-check"></i><b>6</b> This and attributes</a><ul>
+<li class="chapter" data-level="6.1" data-path="this-and-attributes.html"><a href="this-and-attributes.html#what-is-this"><i class="fa fa-check"></i><b>6.1</b> What is <code>this</code>?</a></li>
+<li class="chapter" data-level="6.2" data-path="this-and-attributes.html"><a href="this-and-attributes.html#attributes"><i class="fa fa-check"></i><b>6.2</b> Attributes</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="this-and-attributes.html"><a href="this-and-attributes.html#on-button"><i class="fa fa-check"></i><b>6.2.1</b> On button</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="this-and-attributes.html"><a href="this-and-attributes.html#example-in-shiny-1"><i class="fa fa-check"></i><b>6.3</b> Example in Shiny</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="custom-inputs-binding.html"><a href="custom-inputs-binding.html"><i class="fa fa-check"></i><b>7</b> Custom Inputs Binding</a><ul>
+<li class="chapter" data-level="7.1" data-path="custom-inputs-binding.html"><a href="custom-inputs-binding.html#example-meter-binding"><i class="fa fa-check"></i><b>7.1</b> Example: Meter binding</a></li>
+<li class="chapter" data-level="7.2" data-path="custom-inputs-binding.html"><a href="custom-inputs-binding.html#random-button"><i class="fa fa-check"></i><b>7.2</b> Random Button</a></li>
+<li class="chapter" data-level="7.3" data-path="custom-inputs-binding.html"><a href="custom-inputs-binding.html#switch"><i class="fa fa-check"></i><b>7.3</b> Switch</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="examples.html"><a href="examples.html"><i class="fa fa-check"></i><b>8</b> Examples</a><ul>
+<li class="chapter" data-level="8.1" data-path="examples.html"><a href="examples.html#colinfaytidytuesday201942"><i class="fa fa-check"></i><b>8.1</b> ColinFay/tidytuesday201942</a></li>
+<li class="chapter" data-level="8.2" data-path="examples.html"><a href="examples.html#toast"><i class="fa fa-check"></i><b>8.2</b> Toast</a></li>
+<li class="chapter" data-level="8.3" data-path="examples.html"><a href="examples.html#prompt-sthg"><i class="fa fa-check"></i><b>8.3</b> Prompt sthg</a></li>
+<li class="chapter" data-level="8.4" data-path="examples.html"><a href="examples.html#fixed-nav"><i class="fa fa-check"></i><b>8.4</b> Fixed nav</a></li>
+<li class="chapter" data-level="8.5" data-path="examples.html"><a href="examples.html#get-the-width-of-an-element-from-r"><i class="fa fa-check"></i><b>8.5</b> Get the width of an element from R</a></li>
+<li class="chapter" data-level="8.6" data-path="examples.html"><a href="examples.html#get-number-of-click"><i class="fa fa-check"></i><b>8.6</b> Get number of click</a></li>
+<li class="chapter" data-level="8.7" data-path="examples.html"><a href="examples.html#add-a-message-to-a-menu-element"><i class="fa fa-check"></i><b>8.7</b> Add a message to a menu element</a></li>
+<li class="chapter" data-level="8.8" data-path="examples.html"><a href="examples.html#hide-and-sho-specific-elements"><i class="fa fa-check"></i><b>8.8</b> Hide and sho specific elements</a></li>
+<li class="chapter" data-level="8.9" data-path="examples.html"><a href="examples.html#success-alert"><i class="fa fa-check"></i><b>8.9</b> Success alert</a></li>
+<li class="chapter" data-level="8.10" data-path="examples.html"><a href="examples.html#adapt-size-of-div-to-screen"><i class="fa fa-check"></i><b>8.10</b> Adapt size of div to screen</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="read-more.html"><a href="read-more.html"><i class="fa fa-check"></i><b>9</b> Read More</a><ul>
+<li class="chapter" data-level="9.1" data-path="read-more.html"><a href="read-more.html#shiny-js"><i class="fa fa-check"></i><b>9.1</b> Shiny &amp; JS</a></li>
+<li class="chapter" data-level="9.2" data-path="read-more.html"><a href="read-more.html#js"><i class="fa fa-check"></i><b>9.2</b> JS</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="read-more.html"><a href="read-more.html#javascript-basics"><i class="fa fa-check"></i><b>9.2.1</b> JavaScript basics</a></li>
+<li class="chapter" data-level="9.2.2" data-path="read-more.html"><a href="read-more.html#jquery-1"><i class="fa fa-check"></i><b>9.2.2</b> jQuery</a></li>
+<li class="chapter" data-level="9.2.3" data-path="read-more.html"><a href="read-more.html#intermediate-advanced-javascript"><i class="fa fa-check"></i><b>9.2.3</b> Intermediate / advanced JavaScript</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<div align = "center"><li>🤘</li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">JS 4 Shiny - Field Notes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="control" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> Control loops</h1>
+<div id="for-loop" class="section level2">
+<h2><span class="header-section-number">2.1</span> For loop</h2>
+<ul>
+<li><p>for (statement 1; statement 2; statement 3)</p></li>
+<li>statement 1: init iteration variable</li>
+<li>statement 2: condition for code block execution</li>
+<li><p>statement 3: how to increment of the variable at each loop</p></li>
+</ul>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> plop <span class="op">=</span> [<span class="st">&quot;bim&quot;</span><span class="op">,</span> <span class="st">&quot;bam&quot;</span><span class="op">,</span> <span class="st">&quot;boum&quot;</span>]
+text <span class="op">=</span> <span class="st">&quot;&quot;</span><span class="op">;</span>
+<span class="cf">for</span> (i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="va">plop</span>.<span class="at">length</span><span class="op">;</span> i<span class="op">++</span>) <span class="op">{</span>
+  text <span class="op">+=</span> plop[i] <span class="op">+</span> <span class="st">&quot;-&quot;</span><span class="op">;</span>
+<span class="op">}</span></code></pre>
+<pre><code># undefined
+# &#39;&#39;
+# &#39;bim-bam-boum-&#39;</code></pre>
+</div>
+<div id="while-loop" class="section level2">
+<h2><span class="header-section-number">2.2</span> While loop</h2>
+<blockquote>
+<p>Just as in R, don’t forget to escape the loop</p>
+</blockquote>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> i <span class="op">=</span> <span class="dv">4</span><span class="op">;</span>
+<span class="cf">while</span> (i <span class="op">&lt;</span> <span class="dv">8</span>)<span class="op">{</span>
+  <span class="va">console</span>.<span class="at">log</span>(i <span class="op">*</span> <span class="dv">5</span>)
+  i<span class="op">++</span>
+<span class="op">}</span></code></pre>
+<pre><code># undefined
+# 20
+# 25
+# 30
+# 35
+# 7</code></pre>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">i</code></pre>
+<pre><code># 8</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="js-in-shiny.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

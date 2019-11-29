@@ -1,0 +1,216 @@
+# Examples
+
+```{r include = FALSE}
+knitr::opts_chunk$set(eval = FALSE, comment = "#")
+```
+
+## ColinFay/tidytuesday201942
+
++ On load, this allows to hide all the contents (with the class `row`) and to show only the first. 
++ The first `nav-link` is set to active.
+
+```{js}
+$(function(){
+  $( ".row" ).hide();
+  $( ".row" ).first().show();
+  $( ".nav-link" ).first().addClass("active");
+  var h = parseInt($('nav').outerHeight()) + 30;
+  $(".row").css("padding-top", h + "px");
+})
+```
+
+## Toast
+
++ Using Boostrap 4 toast 
+
+```
+<div id = "globalerror" class="toast global-toast" data-delay = "5000">
+  <div class="toast-body">
+    <span>&#10060;</span> <span> Application error</span>
+  </div>
+</div>
+```
+
+```{js}
+Shiny.addCustomMessageHandler('errortoast', function(id) {
+    $("#globalerror").toast("show")
+});
+  
+Shiny.addCustomMessageHandler('successtoast', function(id) {
+    $("#globalsuccess").toast("show")
+});
+```
+
+```{r eval = FALSE}
+error_toast <- function(){
+  golem::invoke_js("errortoast", TRUE)
+  NULL
+}
+```
+
+## Prompt sthg 
+
++ This function will open a prompt, ask something to the user, and send it back to R on the `input$idout`
+
+```{js}
+function prompt_name(idout){
+  var nom = prompt("Enter a name for your blabla");
+  if (nom === null) {
+    return;
+  }
+  Shiny.setInputValue(idout, nom,  {priority: 'event'});
+}
+```
+
+```{r eval = FALSE}
+tags$button(
+  class = "btn btn-default action-button",
+  "Save blabla", 
+  onclick = sprintf(
+    "prompt_name('%s')",
+    save_id
+  )
+)
+```
+
+## Fixed nav
+
++ This makes a navbar follow the scroll of the page
+
+```{js}
+document.addEventListener('scroll', function (event) {
+  var yoff = window.pageYOffset;
+  var h = parseInt($('nav').outerHeight());
+  $(".fixed-nav").css("top", (h - yoff) + "px");
+}, true);
+```
+
+## Get the width of an element from R
+
++ Ask for the width of a div:
+
+```{js}
+Shiny.addCustomMessageHandler("getwidth", function(what) {
+  var w = document.getElementById(what).clientWidth;
+  Shiny.setInputValue('divheight', w);
+});
+```
+
++ Then use this width to render the plot:
+
+```{r eval = FALSE}
+session$sendCustomMessage("getwidth", ns("biggy"))
+# ... 
+plotOutput(
+  ns("gg_waffer"), 
+  width = as.character(round(input$biggy * 0.7))
+)
+```
+
+## Get number of click
+
+```{js}
+var add_val_and_send = function(e, id, nom){
+  com = "";
+  $(e).data('value', $(e).data('value') + 1 );
+  Shiny.setInputValue(id, {com : nom, val : $(e).data('value')}, {priority : "event"});
+}
+```
+
+```{r eval = FALSE}
+li_custom_context(
+  ns("ligne"), 
+  "La ligne", 
+  `data-value` = 10,
+  sprintf(
+    "add_val_and_send(this, '%s', '%s')",
+    ns("ligne"), nom
+  )
+)
+```
+
+## Add a message to a menu element 
+
++ When the user clicks on the tab, they'll get asked if they confirm that they want to restart the app
+
+```{js}
+$(function(){
+  var x = $('a[href="#shiny-tab-demarrage"]');
+  x.attr("href", "javascript:void(0)");
+  x.attr("onclick", "var x = confirm( 'Do you want to restart the app?' ); if(x){ window.location = window.location };");
+})
+
+```
+
+## Hide and sho specific elements
+
+```{js}
+$( document ).ready(function() {
+  Shiny.addCustomMessageHandler('show_year', function(arg) {
+    $("#single > div.col-sm-3.well > div:nth-child(5)").hide()
+    $("#single > div.col-sm-3.well > div:nth-child(7)").hide()
+    $("#single > div.col-sm-3.well > div:nth-child(3)").show()
+  })
+  Shiny.addCustomMessageHandler('show_artist', function(arg) {
+    $("#single > div.col-sm-3.well > div:nth-child(3)").hide()
+    $("#single > div.col-sm-3.well > div:nth-child(7)").hide()
+    $("#single > div.col-sm-3.well > div:nth-child(5)").show()
+  })
+  Shiny.addCustomMessageHandler('show_label', function(arg) {
+    $("#single > div.col-sm-3.well > div:nth-child(3)").hide()
+    $("#single > div.col-sm-3.well > div:nth-child(5)").hide()
+    $("#single > div.col-sm-3.well > div:nth-child(7)").show()
+  })
+  
+});
+```
+
+## Success alert 
+
+```{r}
+tags$div(
+  class="alert alert-success", 
+  id = "alert-success",
+  tags$a(
+    class="close", 
+    "X"
+  ), 
+  "Success!"
+)
+```
+
+
+```{js}
+$( document ).ready(function() {
+  Shiny.addCustomMessageHandler('success', function(content) {
+    $("#alert-success").show();
+  });
+});
+```
+
+## Adapt size of div to screen 
+
+```{js}
+// https://stackoverflow.com/questions/1038727/how-to-get-browser-width-using-javascript-code
+function getWidth() {
+  if (self.innerWidth) {
+    return self.innerWidth;
+  }
+
+  if (document.documentElement && document.documentElement.clientWidth) {
+    return document.documentElement.clientWidth;
+  }
+
+  if (document.body) {
+    return document.body.clientWidth;
+  }
+}
+
+function makelarge(){
+  var arr_width = $(".arrow").innerWidth() * 2 + 64 * 2;
+  $(".tabrow").not(".inner").css("width", (getWidth() - arr_width) + "px");
+}
+
+window.onresize = makelarge
+```
+

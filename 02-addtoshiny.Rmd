@@ -1,0 +1,138 @@
+# JS in Shiny
+
+## Add JS to Shiny
+
+How to add JavaScript to `{shiny}`?
+
+### With `{golem}`
+
+```{r eval = FALSE}
+golem::add_js_file()
+```
+
+> Simple JS file
+
+```{r eval = FALSE}
+golem::add_js_handler()
+```
+
+> Shiny Handlers
+
+### Link in your app
+
+#### With `tags$script`
+
++ If you have a file:
+
+```{r eval = FALSE}
+tags$script(src = "www/script.js")
+```
+
++ Write the JS code straight in the app:
+
+```{r eval = FALSE}
+tags$script(
+  HTML("var x = ['plop', 'pouet'];
+  x.forEach(x => alert(x))
+  ")
+)
+```
+
+#### With `htmlDependency()`
+
++ Create an `htmlDependency` object:
+
+```{r}
+dep_binding <- function() {
+  htmlDependency(
+    "dep","0.1.0",
+    src = system.file("app/www", package = "expl"),
+    stylesheet = c(
+      "css/uikit.css",
+      "css/custom.css"
+    ),
+    script = c(
+      "input-fleche.js",
+      "input-nav.js",
+      "input-progress.js",
+      "input-rangeSlider.js", 
+      "input-select.js",
+      "input-onoff.js", 
+      "input-sqonOff.js", 
+      "input-radioButton.js",
+      "input-checkbox.js",
+      "input-increment.js",
+      "panel.js"
+    ), 
+    meta = list(
+      lang="fr"
+    ),
+    head = HTML(
+      '<meta http-equiv="X-UA-Compatible" content=="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css?family=Raleway:400,600,700|Roboto+Slab:300,400,700" rel="stylesheet"> '
+    )
+  )
+}
+
+```
+
+Then in `R/app_ui.R`
+
+```{r}
+golem_add_external_resources <- function(){
+  
+  #...
+  dr_binding()
+}
+```
+
+## The JavaScript Shiny Object 
+
+In the browser, there is a `Shiny` JavaScript object.
+
+### Set the value of an input from JavaScript
+
++ From your browser, you can set the value of a Shiny input:
+
+```{js eval = FALSE}
+Shiny.setInputValue(id, value, options)
+```
+
+> With `{priority : 'event'}`, the value is sent even if the value hasn't changed (not the default behavior)
+
+```{js eval = FALSE}
+Shiny.setInputValue("pouet", 12, {priority : 'event'})
+```
+
+> `pouet` will appear as `input$pouet`
+
+```{r eval = FALSE}
+observeEvent( input$pouet , {
+
+})
+```
+
+
+## Shiny JS Handlers
+
++ Pass data from R to JS (from server to browser)
+
+```{js}
+Shiny.addCustomMessageHandler('alert', function(arg) {
+  alert(arg.val);
+  alert(arg.size);
+});
+```
+
++ Send with `session$sendCustomMessage()`
+
++ To pass multiple value, pass a list, then access with `.name`
+
+```{r eval = FALSE}
+session$sendCustomMessage("alert", list(
+  val = 2, 
+  size = 11
+))
+```
+

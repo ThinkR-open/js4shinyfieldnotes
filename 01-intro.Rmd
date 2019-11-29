@@ -1,0 +1,385 @@
+# A quick Intro to Base objects {#intro}
+
+## Launch a REPL
+
++ For interactive usage
+
+```{r eval = FALSE}
+library(bubble)
+node_repl()
+```
+
+## Assignment
+
++ Done with `=`
+
+```{node, results='hide'}
+var x = 12; 
+```
+
+## Scalar objects
+
+### Numbers
+
+```{node, results='hide'}
+var y = 17;
+```
+
+```{node}
+x + y;
+```
+
+### Character
+
+```{node}
+var z = "plop";
+```
+
++ All objects have methods that can be accessed with `obj.`
+
+```{node}
+z.toUpperCase();
+```
+
+```{node}
+z.length;
+```
+
++ To know all the available methods
+
+```{node}
+var prot = Object.getPrototypeOf(z);
+Object.getOwnPropertyNames(prot);
+```
+
+### Boolean
+
+```{node}
+var a = true;
+```
+
++ `if` are written as in R 
+
++ `console.log()` prints to the console (useful for debugging)
+
+```{node}
+if (a) {
+  console.log("yeay");
+}
+```
+
+### Null & undefined
+
++ `null` is an empty, non existing value that has to be defined
+
+```{node}
+null
+```
+
++ `undefined` is a declared variable that has no value
+
+> You'll see undefined when doing assignment, it's the return value of `=`
+
+```{node, result = 'hide'}
+var noval;
+```
+
+```{node}
+noval;
+```
+
+## Array 
+
++ They are R vectors
+
++ Can't be named
+
++ Access by position
+
+__Note: INDEX STARTS AT 0__
+
+### Create
+
++ Can be created empty
+
+```{node, results='hide'}
+var emptyarray = [];
+```
+
+> This type of creation is called "Literals"
+
++ Can be created with values
+
+```{node, results='hide'}
+var x = ["pouet", "plop"]; 
+```
+
++ Can be created with the `new` function
+
+```{node}
+var g = new Array;
+```
+
+
+```{node}
+g
+```
+
+```{node, results='hide'}
+var x = ["pouet", "plop"]; 
+x[0] = "plop"
+```
+
+```{node}
+x
+```
+
+### Select
+
++ By position, (index start at 0)
+
+```{node}
+x[0]
+```
+
++ Filter
+
+```{node}
+var poum = "plop";
+
+x.filter(function(item){
+  return item === poum
+});
+```
+
+> Anonymous functions can be used here (see below for more info)
+
+```{node}
+x.filter(item => item === poum);
+```
+
+### Manipulate 
+
++ Iterate
+
+> with `forEach`
+
+```{node}
+x.forEach(function(item, index) {
+  console.log(index + " : " + item);
+});
+```
+
+> with `map`
+
+```{node}
+x.map(z => z.toUpperCase());
+```
+
++ Finding the first element
+
+```{node}
+var z = [1,2,3,4,5];
+z.find(z => z > 3);
+```
+
++ Test if every / some
+
+```{node}
+x.every(z => z === "plop");
+```
+
+```{node}
+x.some(z => z == "plop");
+```
+
++ Add / Suppress 
+
+  1. At the end
+ 
+```{node, results='hide'}
+// Adds
+x.push("bim");
+```
+
+```{node}
+x
+```
+
+```{node, results='hide'}
+// Removes
+x.pop();
+```
+
+```{node}
+x
+```
+
+  2. At start
+
+```{node, results='hide'}
+// Adds
+x.unshift("bim")
+```
+
+```{node}
+x
+```
+
+```{node, results='hide'}
+// Removes
+x.shift()
+```
+
+```{node}
+x
+```
+
+
+  3. By index
+  
+```{node, results='hide'}
+x.push("bim")
+x.push("blam")
+```
+
+```{node}
+x
+```
+
+Takes 1 argument, starting at index 0
+
+```{node, results='hide'}
+x.splice(0, 1)
+```
+
+```{node}
+x
+```
+
+### Transform 
+
+```{node}
+x.reverse();
+```
+
+```{node}
+x.sort()
+```
+
+```{node}
+var y = ["plaf", "plouf"]
+x.concat(y)
+```
+
+```{node}
+x.join()  
+```
+
+```{node}
+var z = [1, 2, 3]
+z.toString()
+```
+
+## Objects
+
++ More or less like an R list
+
++ Constructed with `{}`
+
+```{node}
+var obj = {
+  a: 12, 
+  b: 17, 
+  c: ["plaf", "plouf"],
+  d: (x) => x.toUpperCase()
+}
+obj
+```
+
++ Access with `.name`
+
+```{node}
+obj.a;
+```
+
++ Internal methods can be used on internal objects
+
+```{node}
+obj.c.map(obj.d);
+```
+
+## Function
+
++ Standard
+
+```{node}
+function add(x, y){
+  return x + y
+}
+```
+
+```{node}
+add(11, 13)
+```
+
++ With the `new` constructor
+
+```{node}
+var add2 = new Function('a', 'b', 'return a + b');
+```
+
+```{node}
+add2(11, 13)
+```
+
++ As an anonymous (or arrow) function
+
+```{node}
+var add3 = (a, b) => a + b
+```
+
+```{node}
+add3(11, 13)
+```
+
+## `typeof`
+
+```{node}
+typeof a;
+typeof z;
+```
+
+# Control loops {#control}
+
+## For loop
+
++ for (statement 1; statement 2; statement 3)
+
++ statement 1: init iteration variable
++ statement 2: condition for code block execution
++ statement 3: how to increment of the variable at each loop
+
+```{node}
+var plop = ["bim", "bam", "boum"]
+text = "";
+for (i = 0; i < plop.length; i++) {
+  text += plop[i] + "-";
+}
+```
+
+## While loop
+
+> Just as in R, don't forget to escape the loop
+
+```{node result = "hide"}
+var i = 4;
+while (i < 8){
+  console.log(i * 5)
+  i++
+}
+```
+
+```{node}
+i
+```

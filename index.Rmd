@@ -1,0 +1,60 @@
+--- 
+title: "JS 4 Shiny - Field Notes"
+author: "Colin Fay"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+description: "Oui."
+---
+
+# Field Notes on JavaScript for Shiny Users {-}
+
+```{r include = FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = "#")
+```
+
+## About this bookdown
+
+This Bookdown is the content of an informal JavaScript training given inside ThinkR. 
+It's in no way supposed to be a complete JavaScript course nor even a complete book. 
+Most of the content is composed of pieces of code + comments, without complete sentences. 
+Please read it with this in mind.
+
+Also, this Bookdown is `{shiny}`-centric so focuse on things that can be used when building Shiny-apps. 
+
+## Installing `{bubble}` {-}
+
++ R package to interact with NodeJS  
+
+__Note: you'll need to have NodeJS installed on your machine__
+
+```{r}
+if (!requireNamespace("bubble")){
+  remotes::install_github("ColinFay/bubble")
+}
+```
+
++ Set the `{knitr}` engine for Rmds
+
+```{r}
+bubble::set_node_engine()
+```
+
++ Access a NodeJS REPL 
+
+```{r eval = FALSE}
+node_repl()
+```
+
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```
+
+

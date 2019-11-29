@@ -1,0 +1,12 @@
+name: yeayjs
+title: yeayjs
+username: Colin
+account: Colin
+server: connect.thinkr.fr
+hostUrl: http://connect.thinkr.fr/__api__
+appId: 179
+bundleId: 660
+url: http://connect.thinkr.fr/yeayjs/
+when: 1574413122.33368
+asMultiple: FALSE
+asStatic: TRUE

@@ -1,0 +1,139 @@
+{
+  "version": 1,
+  "locale": "en_US",
+  "platform": "3.6.0",
+  "metadata": {
+    "appmode": "static",
+    "primary_rmd": null,
+    "primary_html": "index.html",
+    "content_category": null,
+    "has_parameters": false
+  },
+  "packages": null,
+  "files": {
+    "applications.html": {
+      "checksum": "3dc8803cc4010859f7a85fd2e658a91f"
+    },
+    "control.html": {
+      "checksum": "b2233fc6f46a45f8a3c29acfa40828b3"
+    },
+    "custom-inputs-binding-1.html": {
+      "checksum": "a847649411687fd299da83c45ad7a2f1"
+    },
+    "custom-inputs-binding.html": {
+      "checksum": "cf0fff04bd623435b8f5d780eee09620"
+    },
+    "custom-inputs.html": {
+      "checksum": "c84f77f3762f22dce6ed3020774254f7"
+    },
+    "dom-dom-events.html": {
+      "checksum": "353757c1c4c69adbda9d8e8f0b54b888"
+    },
+    "dom-events.html": {
+      "checksum": "9a852bf8a84d93fa6635eb52d8a9d791"
+    },
+    "examples.html": {
+      "checksum": "8dacceacae8fd3bd97018d6302869b19"
+    },
+    "final-words-1.html": {
+      "checksum": "35a347511a9d26c06feda52d848f7787"
+    },
+    "final-words.html": {
+      "checksum": "a92726e1efb9a0f9866debf2cff701f3"
+    },
+    "formationjs_files/figure-html/nice-fig-1.png": {
+      "checksum": "4b684e1e3bb88b751233977e465e2664"
+    },
+    "formationjs_files/figure-html/unnamed-chunk-71-1.png": {
+      "checksum": "9ebfaa712cd2bbb37fbeabe458d3ccd4"
+    },
+    "formationjs_files/figure-html/unnamed-chunk-83-1.png": {
+      "checksum": "4813c7259a843c13910feb94e4b22e4f"
+    },
+    "img/this.jpeg": {
+      "checksum": "c8a85f7d997bc9c3e0d072a8f78d27b4"
+    },
+    "img/whitespace_tree.png": {
+      "checksum": "6ede984df138184fb176969e727c96ae"
+    },
+    "index.html": {
+      "checksum": "9104c0c93aae154f509d2d507331c01c"
+    },
+    "intro.html": {
+      "checksum": "8c3b43dc2a7cb43a2761f185a15c4df9"
+    },
+    "jquery.html": {
+      "checksum": "9c2cbae744238efebf0c55f8da03db6d"
+    },
+    "js-in-shiny.html": {
+      "checksum": "97f86af777ec7efc86cd3db77ddc4e4f"
+    },
+    "libs/gitbook-2.6.7/css/fontawesome/fontawesome-webfont.ttf": {
+      "checksum": "b06871f281fee6b241d60582ae9369b9"
+    },
+    "libs/gitbook-2.6.7/css/plugin-bookdown.css": {
+      "checksum": "47d2ab46c435be24b407aa0c92b4d610"
+    },
+    "libs/gitbook-2.6.7/css/plugin-fontsettings.css": {
+      "checksum": "76af8c23a8138a4b66aa6959ca5c3a8e"
+    },
+    "libs/gitbook-2.6.7/css/plugin-highlight.css": {
+      "checksum": "467fbe4b6b5a4b88fdd75c463f8626ec"
+    },
+    "libs/gitbook-2.6.7/css/plugin-search.css": {
+      "checksum": "0d7a6bb6a50e00c7358cf61027f099f0"
+    },
+    "libs/gitbook-2.6.7/css/plugin-table.css": {
+      "checksum": "8cb82f94ce1446fa4bafe7a3933e6c65"
+    },
+    "libs/gitbook-2.6.7/css/style.css": {
+      "checksum": "11f13a161c95d0e8257d673dc27f9251"
+    },
+    "libs/gitbook-2.6.7/js/app.min.js": {
+      "checksum": "7fa8a214bc682ff4aaf434bc342c0a8f"
+    },
+    "libs/gitbook-2.6.7/js/jquery.highlight.js": {
+      "checksum": "999424d32e03b9857098d2c7f53928c2"
+    },
+    "libs/gitbook-2.6.7/js/lunr.js": {
+      "checksum": "fbc747c6143aabb39b0ea7c0524b7057"
+    },
+    "libs/gitbook-2.6.7/js/plugin-bookdown.js": {
+      "checksum": "fbd43df757f068e8b6ed75d972772c17"
+    },
+    "libs/gitbook-2.6.7/js/plugin-fontsettings.js": {
+      "checksum": "c69e5565f16ccb8560ee353e6ba4b927"
+    },
+    "libs/gitbook-2.6.7/js/plugin-search.js": {
+      "checksum": "2d4c4d47ba34946b8ebcbe41aa522756"
+    },
+    "libs/gitbook-2.6.7/js/plugin-sharing.js": {
+      "checksum": "723416fb0154ce96e35ce1ec56992afa"
+    },
+    "libs/jquery-2.2.3/jquery.min.js": {
+      "checksum": "33cabfa15c1060aaa3d207c653afb1ee"
+    },
+    "literature.html": {
+      "checksum": "52aaf46de95125e29602148c82592eef"
+    },
+    "methods.html": {
+      "checksum": "c4024fca63e008143c2c1497114668ce"
+    },
+    "read-more.html": {
+      "checksum": "d6b58b7419c3dec71cb31d98de20167b"
+    },
+    "references.html": {
+      "checksum": "133b14e5d0bc588b2c6d66bdfbf602b2"
+    },
+    "search_index.json": {
+      "checksum": "c00aa75e0827929e0b205eb153a84755"
+    },
+    "style.css": {
+      "checksum": "19f0b33dc27d4f748874d2cde5cea5bc"
+    },
+    "this-and-attributes.html": {
+      "checksum": "794a38ada45bfc3d080a99623f1a2a95"
+    }
+  },
+  "users": null
+}

@@ -1,0 +1,131 @@
+# This and attributes
+
+## What is `this`?
+
+Context from where the function is called.
+
+```{node}
+var plop = {
+  a: 12, 
+  set_a: function(val){
+    this.a = val;
+  },
+  get_a: function(){
+    return this.a;
+  }
+}
+plop.set_a(18)
+plop.get_a()
+```
+
+```
+<button name = "plop" onclick="alert(this.name)">Click me</button>
+```
+
+<button name = "plop" onclick="alert(this.name)">Click me</button>
+
+## Attributes
+
+> Attributes are "data" contained in the HTML node
+
+### On button
+
+```
+<button name = "plop" onclick="alert(this.name)">Click me</button>
+```
+
+<button name = "plop" onclick="alert(this.name)">Click me</button>
+
+```
+<img src = "img/this.jpeg" name = "plop" onclick="alert(this.name)"></img>
+```
+
+<img src = "img/this.jpeg" name = "plop" onclick="alert(this.name)"></img>
+
+## Example in Shiny
+
++ Create alert on button click
+
+```{r eval = FALSE}
+library(shiny)
+ui <- function(request){
+  tagList(
+    tableOutput("tbl")
+  )
+}
+
+server <- function(input, output, session){
+  output$tbl <- renderTable({
+    data.frame(
+      x = letters[1:5], 
+      y = sprintf(
+        "<button name = '%s' onclick='alert(this.name)'>Click me</button>", 
+        letters[1:5]
+      )
+    )
+  }, sanitize.text.function = identity)
+}
+
+shinyApp(ui, server)
+```
+
++ Create button inside a table and send the value back to Shiny
+
+```{r eval = FALSE}
+library(shiny)
+ui <- function(request){
+  tagList(
+    tableOutput("tbl"), 
+    tags$script('
+      function give(arg){
+        Shiny.setInputValue("last_clicked", arg.name, {priority : "event"})
+      }
+    ')
+  )
+}
+
+server <- function(input, output, session){
+  output$tbl <- renderTable({
+    data.frame(
+      x = letters[1:5], 
+      y = sprintf(
+        "<button name = '%s' onclick='give(this)'>Click me</button>", 
+        letters[1:5]
+      )
+    )
+  }, sanitize.text.function = identity)
+  
+  observeEvent( input$last_clicked , {
+    print(input$last_clicked)
+  })
+  
+}
+
+shinyApp(ui, server)
+```
+
++ Onclick event on plot to get the custom name of the plot
+
+```{r eval = FALSE}
+library(shiny)
+ui <- function(request){
+  tagList(
+    plotOutput("plot") %>%
+      tagAppendAttributes(
+        hey = "plop",
+        onclick = "alert(this.getAttribute('hey'))"
+      )
+  )
+}
+
+server <- function(input, output, session){
+  output$plot <- renderPlot({
+    plot(iris)
+  })
+}
+
+shinyApp(ui, server)
+```
+
+
+

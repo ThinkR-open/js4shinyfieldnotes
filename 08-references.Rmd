@@ -1,0 +1,31 @@
+# Read More 
+
+## Shiny & JS
+
++ [Building Big Shiny Apps - A Workflow - Chapter 19 Using JavaScript](https://thinkr-open.github.io/building-shiny-apps-workflow/optimjs.html)
+
++ [Build custom input objects](https://shiny.rstudio.com/articles/building-inputs.html)
+
++ [Packaging JavaScript code for Shiny](https://shiny.rstudio.com/articles/packaging-javascript.html)
+
++ [Communicating with Shiny via JavaScript](https://shiny.rstudio.com/articles/communicating-with-js.html)
+
+## JS 
+
+### JavaScript basics 
+
++ [Mozilla JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
++ [w3schools JavaScript](https://www.w3schools.com/js/default.asp)
++ [Free Code Camp](https://www.freecodecamp.org/)
++ [JavaScript For Cats](http://jsforcats.com/)
++ [Learn JS](https://www.learn-js.org/)
+
+### jQuery
+
++ [jQuery Learning Center](https://learn.jquery.com/)
++ [w3schools jQuery](https://www.w3schools.com/jquery/default.asp)
+
+### Intermediate / advanced JavaScript
+
++ [Eloquent JavaScript](https://eloquentjavascript.net/)
++ [You Don't Know JS Yet](https://github.com/getify/You-Dont-Know-JS)

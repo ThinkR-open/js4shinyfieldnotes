@@ -1,0 +1,266 @@
+# Custom Inputs Binding
+
+Shiny allows to extend its inputs with new input bindings.
+
+To do that, you'll need: 
+
++ A custom binding defined in JS
+
++ A custom input in HTML (can be done with R)
+
+## Example: Meter binding 
+
++ `www/binding.js`
+
+```{js eval = FALSE}
+// Define an event on click
+$(document).on("click", ".meter", function(evt) {
+  var el = $(evt.target);
+  
+  // Change the value when clicked
+  el.text(parseInt(el.text()) + 1);
+  el.attr("value", parseInt(el.attr("value")) + 1);
+
+  // Trigger an event 
+  el.trigger("fire");
+});
+
+// Create a new InputBinding object
+var meter = new Shiny.InputBinding();
+
+// Extend this object with methods
+$.extend(meter, {
+  
+  // How to find the object
+  find: function(scope) {
+    return $(scope).find(".meter");
+  },
+  // How to get the value from the objet
+  getValue: function(el) {
+    return parseInt($(el).attr("value"));
+  },
+  // Used to retrieve the ID of the object
+  // STANDARD
+  getId: function(el) {
+    return el.id;
+  },
+  // Used to change the value when update for example
+  setValue: function(el, value) {
+    $(el).text(value);
+    $(el).attr("value", value);
+  },
+  // Register the event, and validate callback
+  subscribe: function(el, callback) {
+    $(el).on("fire.meter", function(e) {
+      callback();
+    });
+  },
+  // To remove the binding
+  unsubscribe: function(el) {
+    $(el).off(".meter");
+  },
+  // What to do when you use 
+  // session$sendCustomMessage() 
+  receiveMessage: function(el, data) {
+    this.setValue(el, data.value);
+    $(el).trigger('fire');
+  }
+});
+
+// Register this object as a Shiny Input
+Shiny.inputBindings.register(meter);
+```
+
++ In Shiny
+
+```{r eval = FALSE}
+library(shiny)
+meter <- function(
+  inputId, 
+  value = 2
+) {
+  tagList(
+    singleton(
+      tags$head(
+        tags$script(
+          src = "www/binding.js"
+        )
+      )
+    ),
+    tags$meter(
+      id = inputId,
+      value = as.character(value), 
+      min="0", 
+      max="10",
+      class = "meter",
+      as.character(value)
+    )
+  )
+}
+
+update_meter <- function(
+  session, 
+  inputId,
+  value
+){
+  session$sendInputMessage(inputId, list(value = value))
+}
+
+ui <- function(){
+  addResourcePath("www", "www")
+  fluidPage(
+    meter("plop"), 
+    actionButton("go","Restore")
+  )
+}
+
+server <- function(input, output, session) {
+  observeEvent(input$plop, {
+    print(input$plop)
+  })
+  
+  observeEvent( input$go , {
+    update_meter(session, "plop", 0)
+  })
+}
+
+shinyApp(ui = ui, server = server)
+```
+
+## Random Button 
+
++ `www/binding.js`
+
+```{js}
+$(document).on("click", ".ranbutt", function(evt) {
+  // define what happens on click
+  var el = $(evt.target);
+  el.data("value", Math.random());
+  el.text(el.data("value")):
+  // Needed to trigger the callback
+  el.trigger("go");
+});
+
+var ranbutt = new Shiny.InputBinding();
+
+$.extend(ranbutt, {
+  find: function(scope) {
+    return $(scope).find(".ranbutt");
+  },
+  getValue: function(el) {
+    return($(el).data("value"));
+  },
+  getId: function(el) {
+    return el.id;
+  },
+  setValue: function(el, value) {
+    $(el).data("value", Math.random())
+    $(el).text(el.data("value"))
+  },
+  subscribe: function(el, callback) {
+    $(el).on("go.ranbutt", function(e) {
+      callback();
+    });
+  },
+  unsubscribe: function(el) {
+    $(el).off(".ranbutt");
+  },
+
+  receiveMessage: function(el, data) {
+    this.setValue(el, data.value);
+    $(el).trigger('go');
+  }
+});
+
+Shiny.inputBindings.register(ranbutt);
+```
+
+
++ `app.R`
+
+```{r eval = FALSE}
+ui <- function(){
+  addResourcePath("www", "www")
+  fluidPage(
+    singleton(
+      tags$head(
+        tags$script(
+          src = "www/binding.js"
+          )
+        )
+      ), 
+      tags$button(
+        class = "ranbutt", 
+        `data-value` = 1, 
+        id = "plop",
+        "1"
+    )
+  )
+}
+server <- function(input, output, session) {
+  observeEvent(input$plop, {
+    print(input$plop)
+  })
+    
+}
+shinyApp(ui = ui, server = server)
+
+```
+
+## Switch 
+
++ `www/binding.js`
+
+```{js}
+$(document).on("click", ".switch-toggle-switch", function(evt) {
+  var el = $(evt.target);
+  
+  var val = parseInt(el.data("value"))
+  
+  if (val == 1){
+    el.data("value", 0);
+  } 
+  if (val === 0){
+    el.data("value", 1);
+  } 
+
+  el.trigger("change");
+  
+});
+
+var onoffBinding = new Shiny.InputBinding();
+
+$.extend(onoffBinding, {
+  find: function(scope) {
+    return $(scope).find(".switch-toggle-switch");
+  },
+  getValue: function(el) {  
+    return parseInt($(el).data("value"));
+  },
+  setValue: function(el, value) {
+    $(el).value(value);
+  },
+  subscribe: function(el, callback) {
+    $(el).on("change.onoffBinding", function(e) {
+      callback();
+    });
+  },
+  unsubscribe: function(el) {
+    $(el).off(".onoffBinding");
+  }
+});
+
+Shiny.inputBindings.register(onoffBinding);
+```
+
++ In Shiny
+
+```{r eval = FALSE}
+tags$div(
+  id = inputId,
+  `data-value` = 0,
+  class="switch-toggle-switch", 
+  style = "pointer-events: all"
+)
+```
+
