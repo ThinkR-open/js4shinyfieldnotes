@@ -1,7 +1,7 @@
 --- 
-title: "JS 4 Shiny - Field Notes"
+title: "JavaScript 4 Shiny - Field Notes"
 author: "Colin Fay"
-date: "`r Sys.Date()`"
+date: "Last build: `r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
@@ -16,14 +16,35 @@ description: "Oui."
 knitr::opts_chunk$set(echo = TRUE, comment = "#")
 ```
 
+
+<style>
+img.left {
+  float: left;
+  margin-right: 1em;
+}
+</style>
+
+<div class = "left">
+
+<img src="img/austrich.jpg" class = "left" width = "300px">
+
+</div>
+
 ## About this bookdown  {-}
 
-This Bookdown is the content of an informal JavaScript training given inside ThinkR. 
+This Bookdown is the content of an informal JavaScript training given inside ThinkR, and will probably be updated from time to time. 
 It's in no way supposed to be a complete JavaScript course nor even a complete book. 
 Most of the content is composed of pieces of code + comments, without complete sentences. 
+
 Please read it with this in mind.
 
-Also, this Bookdown is `{shiny}`-centric so focuse on things that can be used when building Shiny-apps. 
+Also, this Bookdown is `{shiny}`-centric so it focuses on things that can be useful when building Shiny application.  
+
+What this book covers : bascic JavaScript objects, adding JavaScript to Shiny apps, the DOM elements & DOM events, jQuery, `this` and attributes, and building custom inputs for Shiny. 
+
+You'll find in the "Examples" section pieces of code written in real life Shiny Apps. 
+
+The Read More part points to external resources about JavaScript and Shiny. 
 
 ## Installing `{bubble}` {-}
 
