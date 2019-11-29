@@ -1,16 +1,14 @@
 bookdown::gitbook:
-  css: style.css
+  css: [css/style.css, css/thinkr.css, css/style_gitbook.css]
   config:
     toc:
       before: |
         <li><a href="./">JS 4 Shiny</a></li>
       after: |
-        <div align = "center"><li>🤘</li>
-</div>    download: ["pdf", "epub"]
-bookdown::pdf_book:
+        <div align = "center"><li>Made with 🤘 by ThinkR</li></div>        edit:
+      link: https://github.com/ThinkR-open/building-shiny-apps-workflow/edit/master/%s
+      text: "Edit"        
   includes:
-    in_header: preamble.tex
-  latex_engine: xelatex
-  citation_package: natbib
-  keep_tex: yes
-bookdown::epub_book: default
+    in_header: ga.html      
+    after_body: gitbook-footer-thinkr.html
+    

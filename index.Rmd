@@ -16,7 +16,7 @@ description: "Oui."
 knitr::opts_chunk$set(echo = TRUE, comment = "#")
 ```
 
-## About this bookdown
+## About this bookdown  {-}
 
 This Bookdown is the content of an informal JavaScript training given inside ThinkR. 
 It's in no way supposed to be a complete JavaScript course nor even a complete book. 

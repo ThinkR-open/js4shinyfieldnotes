@@ -47,6 +47,15 @@
 
 
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-149994171-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-149994171-1');
+</script>
 
 
 <style type="text/css">
@@ -113,7 +122,9 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/thinkr.css" type="text/css" />
+<link rel="stylesheet" href="css/style_gitbook.css" type="text/css" />
 </head>
 
 <body>
@@ -130,7 +141,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Field Notes on JavaScript for Shiny Users</a><ul>
-<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#about-this-bookdown"><i class="fa fa-check"></i><b>0.1</b> About this bookdown</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#about-this-bookdown"><i class="fa fa-check"></i>About this bookdown</a></li>
 <li><a href="index.html#installing-bubble">Installing <code>{bubble}</code></a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> A quick Intro to Base objects</a><ul>
@@ -222,7 +233,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="divider"></li>
-<div align = "center"><li>🤘</li>
+<div align = "center"><li>Made with 🤘 by ThinkR</li></div>        edit:
 
 </ul>
 
@@ -422,6 +433,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </div>
 </div>
+<hr/>
+<footer>
+<a href="rtask.thinkr.fr"><img src="img/logo400_129.png" alt="ThinkR Website"/></a>
+</footer>
             </section>
 
           </div>
@@ -467,7 +482,9 @@ gitbook.start({
 },
 "download": null,
 "toc": {
-"collapse": "subsection"
+"collapse": "subsection",
+"link": "https://github.com/ThinkR-open/building-shiny-apps-workflow/edit/master/%s",
+"text": "Edit"
 }
 });
 });
