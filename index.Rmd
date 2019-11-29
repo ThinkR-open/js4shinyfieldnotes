@@ -71,6 +71,13 @@ node_repl()
 ```
 
 
+## About the image {-}
+
+The illustration on this page comes from Flickr Commons, and is available [online](https://flic.kr/p/i51Hes) 
+
+Ref : 
+> Image taken from page 33 of 'Stanley and Africa: also, the travels, adventures, and discoveries of Captain John H. Speke, Captain Richard F. Burton ... and other distinguished explorers. [With plates, including portraits.]'
+
 ```{r include=FALSE}
 # automatically create a bib database for R packages
 knitr::write_bib(c(
