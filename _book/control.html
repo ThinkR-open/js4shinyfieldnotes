@@ -142,6 +142,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Field Notes on JavaScript for Shiny Users</a><ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#about-this-bookdown"><i class="fa fa-check"></i>About this bookdown</a></li>
 <li><a href="index.html#installing-bubble">Installing <code>{bubble}</code></a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#about-the-image"><i class="fa fa-check"></i>About the image</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> A quick Intro to Base objects</a><ul>
 <li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#launch-a-repl"><i class="fa fa-check"></i><b>1.1</b> Launch a REPL</a></li>
@@ -163,8 +164,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.7" data-path="intro.html"><a href="intro.html#typeof"><i class="fa fa-check"></i><b>1.7</b> <code>typeof</code></a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="control.html"><a href="control.html"><i class="fa fa-check"></i><b>2</b> Control loops</a><ul>
-<li class="chapter" data-level="2.1" data-path="control.html"><a href="control.html#for-loop"><i class="fa fa-check"></i><b>2.1</b> For loop</a></li>
+<li class="chapter" data-level="2.1" data-path="control.html"><a href="control.html#for-loop"><i class="fa fa-check"></i><b>2.1</b> For loop</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="control.html"><a href="control.html#for"><i class="fa fa-check"></i><b>2.1.1</b> for</a></li>
+<li class="chapter" data-level="2.1.2" data-path="control.html"><a href="control.html#for-in"><i class="fa fa-check"></i><b>2.1.2</b> for in</a></li>
+<li class="chapter" data-level="2.1.3" data-path="control.html"><a href="control.html#for-of"><i class="fa fa-check"></i><b>2.1.3</b> for of</a></li>
+</ul></li>
 <li class="chapter" data-level="2.2" data-path="control.html"><a href="control.html#while-loop"><i class="fa fa-check"></i><b>2.2</b> While loop</a></li>
+<li class="chapter" data-level="2.3" data-path="control.html"><a href="control.html#switch"><i class="fa fa-check"></i><b>2.3</b> Switch</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="js-in-shiny.html"><a href="js-in-shiny.html"><i class="fa fa-check"></i><b>3</b> JS in Shiny</a><ul>
 <li class="chapter" data-level="3.1" data-path="js-in-shiny.html"><a href="js-in-shiny.html#add-js-to-shiny"><i class="fa fa-check"></i><b>3.1</b> Add JS to Shiny</a><ul>
@@ -209,7 +215,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7" data-path="custom-inputs-binding.html"><a href="custom-inputs-binding.html"><i class="fa fa-check"></i><b>7</b> Custom Inputs Binding</a><ul>
 <li class="chapter" data-level="7.1" data-path="custom-inputs-binding.html"><a href="custom-inputs-binding.html#example-meter-binding"><i class="fa fa-check"></i><b>7.1</b> Example: Meter binding</a></li>
 <li class="chapter" data-level="7.2" data-path="custom-inputs-binding.html"><a href="custom-inputs-binding.html#random-button"><i class="fa fa-check"></i><b>7.2</b> Random Button</a></li>
-<li class="chapter" data-level="7.3" data-path="custom-inputs-binding.html"><a href="custom-inputs-binding.html#switch"><i class="fa fa-check"></i><b>7.3</b> Switch</a></li>
+<li class="chapter" data-level="7.3" data-path="custom-inputs-binding.html"><a href="custom-inputs-binding.html#switch-1"><i class="fa fa-check"></i><b>7.3</b> Switch</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="examples.html"><a href="examples.html"><i class="fa fa-check"></i><b>8</b> Examples</a><ul>
 <li class="chapter" data-level="8.1" data-path="examples.html"><a href="examples.html#colinfaytidytuesday201942"><i class="fa fa-check"></i><b>8.1</b> ColinFay/tidytuesday201942</a></li>
@@ -256,19 +262,49 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="for-loop" class="section level2">
 <h2><span class="header-section-number">2.1</span> For loop</h2>
 <ul>
+<li>Three types: <code>for</code>, <code>for/in</code>, and <code>for/of</code></li>
+</ul>
+<div id="for" class="section level3">
+<h3><span class="header-section-number">2.1.1</span> for</h3>
+<ul>
 <li><p>for (statement 1; statement 2; statement 3)</p></li>
 <li>statement 1: init iteration variable</li>
 <li>statement 2: condition for code block execution</li>
 <li><p>statement 3: how to increment of the variable at each loop</p></li>
 </ul>
-<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> plop <span class="op">=</span> [<span class="st">&quot;bim&quot;</span><span class="op">,</span> <span class="st">&quot;bam&quot;</span><span class="op">,</span> <span class="st">&quot;boum&quot;</span>]
-text <span class="op">=</span> <span class="st">&quot;&quot;</span><span class="op">;</span>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> plop <span class="op">=</span> [<span class="st">&quot;bim&quot;</span><span class="op">,</span> <span class="st">&quot;bam&quot;</span><span class="op">,</span> <span class="st">&quot;boum&quot;</span>]<span class="op">;</span>
+<span class="kw">var</span> text <span class="op">=</span> <span class="st">&quot;&quot;</span><span class="op">;</span>
 <span class="cf">for</span> (i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="va">plop</span>.<span class="at">length</span><span class="op">;</span> i<span class="op">++</span>) <span class="op">{</span>
   text <span class="op">+=</span> plop[i] <span class="op">+</span> <span class="st">&quot;-&quot;</span><span class="op">;</span>
 <span class="op">}</span></code></pre>
 <pre><code># undefined
-# &#39;&#39;
+# undefined
 # &#39;bim-bam-boum-&#39;</code></pre>
+</div>
+<div id="for-in" class="section level3">
+<h3><span class="header-section-number">2.1.2</span> for in</h3>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> plop <span class="op">=</span> [<span class="st">&quot;bim&quot;</span><span class="op">,</span> <span class="st">&quot;bam&quot;</span><span class="op">,</span> <span class="st">&quot;boum&quot;</span>]
+<span class="cf">for</span> (i <span class="kw">in</span> plop) <span class="op">{</span>
+  <span class="va">console</span>.<span class="at">log</span>(i)
+<span class="op">}</span></code></pre>
+<pre><code># undefined
+# 0
+# 1
+# 2
+# undefined</code></pre>
+</div>
+<div id="for-of" class="section level3">
+<h3><span class="header-section-number">2.1.3</span> for of</h3>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> plop <span class="op">=</span> [<span class="st">&quot;bim&quot;</span><span class="op">,</span> <span class="st">&quot;bam&quot;</span><span class="op">,</span> <span class="st">&quot;boum&quot;</span>]
+<span class="cf">for</span> (i of plop) <span class="op">{</span>
+  <span class="va">console</span>.<span class="at">log</span>(i)
+<span class="op">}</span></code></pre>
+<pre><code># undefined
+# bim
+# bam
+# boum
+# undefined</code></pre>
+</div>
 </div>
 <div id="while-loop" class="section level2">
 <h2><span class="header-section-number">2.2</span> While loop</h2>
@@ -288,6 +324,31 @@ text <span class="op">=</span> <span class="st">&quot;&quot;</span><span class="
 # 7</code></pre>
 <pre class="sourceCode javascript"><code class="sourceCode javascript">i</code></pre>
 <pre><code># 8</code></pre>
+</div>
+<div id="switch" class="section level2">
+<h2><span class="header-section-number">2.3</span> Switch</h2>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> ploum <span class="op">=</span> [<span class="dv">4</span><span class="op">,</span><span class="dv">5</span>]<span class="op">;</span>
+<span class="cf">switch</span> (ploum[<span class="dv">0</span>])<span class="op">{</span>
+  <span class="cf">case</span> <span class="dv">4</span><span class="op">:</span>
+    res <span class="op">=</span> <span class="st">&quot;four&quot;</span><span class="op">;</span>
+    <span class="cf">break</span><span class="op">;</span>
+<span class="op">}</span></code></pre>
+<pre><code># undefined
+# &#39;four&#39;</code></pre>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> plaf <span class="op">=</span> [<span class="st">&quot;am&quot;</span><span class="op">,</span> <span class="st">&quot;stram&quot;</span><span class="op">,</span> <span class="st">&quot;gram&quot;</span>]<span class="op">;</span>
+<span class="cf">switch</span> (plaf[<span class="dv">1</span>])<span class="op">{</span>
+  <span class="cf">case</span> <span class="st">&quot;am&quot;</span><span class="op">:</span>
+    cool <span class="op">=</span> <span class="st">&quot;pic&quot;</span><span class="op">;</span>
+    <span class="cf">break</span><span class="op">;</span>
+  <span class="cf">case</span> <span class="st">&quot;stram&quot;</span><span class="op">:</span>
+    cool <span class="op">=</span> <span class="st">&quot;et pic&quot;</span><span class="op">;</span>
+    <span class="cf">break</span><span class="op">;</span>
+  <span class="cf">case</span> <span class="st">&quot;gram&quot;</span><span class="op">:</span>
+    cool <span class="op">=</span> <span class="st">&quot;collegram&quot;</span><span class="op">;</span>
+    <span class="cf">break</span><span class="op">;</span>
+<span class="op">}</span></code></pre>
+<pre><code># undefined
+# &#39;et pic&#39;</code></pre>
 
 </div>
 </div>

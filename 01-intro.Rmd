@@ -349,37 +349,3 @@ add3(11, 13)
 typeof a;
 typeof z;
 ```
-
-# Control loops {#control}
-
-## For loop
-
-+ for (statement 1; statement 2; statement 3)
-
-+ statement 1: init iteration variable
-+ statement 2: condition for code block execution
-+ statement 3: how to increment of the variable at each loop
-
-```{node}
-var plop = ["bim", "bam", "boum"]
-text = "";
-for (i = 0; i < plop.length; i++) {
-  text += plop[i] + "-";
-}
-```
-
-## While loop
-
-> Just as in R, don't forget to escape the loop
-
-```{node result = "hide"}
-var i = 4;
-while (i < 8){
-  console.log(i * 5)
-  i++
-}
-```
-
-```{node}
-i
-```

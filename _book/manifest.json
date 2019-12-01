@@ -11,62 +11,47 @@
   },
   "packages": null,
   "files": {
-    "applications.html": {
-      "checksum": "3dc8803cc4010859f7a85fd2e658a91f"
-    },
     "control.html": {
-      "checksum": "b2233fc6f46a45f8a3c29acfa40828b3"
+      "checksum": "03735525973c84b37ea27f0848dfb603"
     },
-    "custom-inputs-binding-1.html": {
-      "checksum": "a847649411687fd299da83c45ad7a2f1"
+    "css/style_gitbook.css": {
+      "checksum": "befa749e9e33ad674fccc1d1c1f82ff0"
+    },
+    "css/style.css": {
+      "checksum": "19f0b33dc27d4f748874d2cde5cea5bc"
+    },
+    "css/thinkr.css": {
+      "checksum": "7077c70020e6d959ca04e9e58c100d39"
     },
     "custom-inputs-binding.html": {
-      "checksum": "cf0fff04bd623435b8f5d780eee09620"
-    },
-    "custom-inputs.html": {
-      "checksum": "c84f77f3762f22dce6ed3020774254f7"
+      "checksum": "93ae37177a42427bf8404a390b638b54"
     },
     "dom-dom-events.html": {
-      "checksum": "353757c1c4c69adbda9d8e8f0b54b888"
-    },
-    "dom-events.html": {
-      "checksum": "9a852bf8a84d93fa6635eb52d8a9d791"
+      "checksum": "66aa60a000b4a92462a4d0115c6aa7e3"
     },
     "examples.html": {
-      "checksum": "8dacceacae8fd3bd97018d6302869b19"
+      "checksum": "9a279ed1aff0d81da398feb9ce6723cd"
     },
-    "final-words-1.html": {
-      "checksum": "35a347511a9d26c06feda52d848f7787"
+    "img/austrich.jpg": {
+      "checksum": "21183e1e76230679887a30fb48a04e03"
     },
-    "final-words.html": {
-      "checksum": "a92726e1efb9a0f9866debf2cff701f3"
-    },
-    "formationjs_files/figure-html/nice-fig-1.png": {
-      "checksum": "4b684e1e3bb88b751233977e465e2664"
-    },
-    "formationjs_files/figure-html/unnamed-chunk-71-1.png": {
-      "checksum": "9ebfaa712cd2bbb37fbeabe458d3ccd4"
-    },
-    "formationjs_files/figure-html/unnamed-chunk-83-1.png": {
-      "checksum": "4813c7259a843c13910feb94e4b22e4f"
-    },
-    "img/this.jpeg": {
-      "checksum": "c8a85f7d997bc9c3e0d072a8f78d27b4"
+    "img/logo400_129.png": {
+      "checksum": "0867a3872f1bae8e06f22fd243e63318"
     },
     "img/whitespace_tree.png": {
       "checksum": "6ede984df138184fb176969e727c96ae"
     },
     "index.html": {
-      "checksum": "9104c0c93aae154f509d2d507331c01c"
+      "checksum": "2c095e8e35196f8362548264ce739bd4"
     },
     "intro.html": {
-      "checksum": "8c3b43dc2a7cb43a2761f185a15c4df9"
+      "checksum": "b4c0fe523489ba1981801d8a9f9bdc54"
     },
     "jquery.html": {
-      "checksum": "9c2cbae744238efebf0c55f8da03db6d"
+      "checksum": "0b6e2cadeb15e779a99a03b5b4d19ae6"
     },
     "js-in-shiny.html": {
-      "checksum": "97f86af777ec7efc86cd3db77ddc4e4f"
+      "checksum": "66b3321daf61a3ce57d44738bf3e4be9"
     },
     "libs/gitbook-2.6.7/css/fontawesome/fontawesome-webfont.ttf": {
       "checksum": "b06871f281fee6b241d60582ae9369b9"
@@ -113,26 +98,14 @@
     "libs/jquery-2.2.3/jquery.min.js": {
       "checksum": "33cabfa15c1060aaa3d207c653afb1ee"
     },
-    "literature.html": {
-      "checksum": "52aaf46de95125e29602148c82592eef"
-    },
-    "methods.html": {
-      "checksum": "c4024fca63e008143c2c1497114668ce"
-    },
     "read-more.html": {
-      "checksum": "d6b58b7419c3dec71cb31d98de20167b"
-    },
-    "references.html": {
-      "checksum": "133b14e5d0bc588b2c6d66bdfbf602b2"
+      "checksum": "314a8577d98b0439c7f4edd3bbba58a1"
     },
     "search_index.json": {
-      "checksum": "c00aa75e0827929e0b205eb153a84755"
-    },
-    "style.css": {
-      "checksum": "19f0b33dc27d4f748874d2cde5cea5bc"
+      "checksum": "70afcb762953339e58f8885d9cd287f3"
     },
     "this-and-attributes.html": {
-      "checksum": "794a38ada45bfc3d080a99623f1a2a95"
+      "checksum": "b77ab21d31c4c4a81633385522fb504e"
     }
   },
   "users": null

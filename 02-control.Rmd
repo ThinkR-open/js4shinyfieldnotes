@@ -1,0 +1,85 @@
+# Control loops {#control}
+
+## For loop
+
++ Three types: `for`, `for/in`, and `for/of`
+
+### for
+
++ for (statement 1; statement 2; statement 3)
+
++ statement 1: init iteration variable
++ statement 2: condition for code block execution
++ statement 3: how to increment of the variable at each loop
+
+```{node}
+var plop = ["bim", "bam", "boum"];
+var text = "";
+for (i = 0; i < plop.length; i++) {
+  text += plop[i] + "-";
+}
+```
+
+### for in 
+
+
+```{node}
+var plop = ["bim", "bam", "boum"]
+for (i in plop) {
+  console.log(i)
+}
+```
+
+### for of 
+
+
+```{node}
+var plop = ["bim", "bam", "boum"]
+for (i of plop) {
+  console.log(i)
+}
+```
+
+
+## While loop
+
+> Just as in R, don't forget to escape the loop
+
+```{node result = "hide"}
+var i = 4;
+while (i < 8){
+  console.log(i * 5)
+  i++
+}
+```
+
+```{node}
+i
+```
+
+## Switch
+
+```{node}
+var ploum = [4,5];
+switch (ploum[0]){
+  case 4:
+    res = "four";
+    break;
+}
+```
+
+```{node}
+var plaf = ["am", "stram", "gram"];
+switch (plaf[1]){
+  case "am":
+    cool = "pic";
+    break;
+  case "stram":
+    cool = "et pic";
+    break;
+  case "gram":
+    cool = "collegram";
+    break;
+}
+```
+
