@@ -176,6 +176,22 @@ x.forEach(function(item, index) {
 x.map(z => z.toUpperCase());
 ```
 
+Example, extracted from https://colinfay.me/aoc-2019-01/
+
+```{node}
+var res = [105311, 117290, 97762, 124678, 132753, 114635];
+var res = res.map(x => Math.floor(x / 3) - 2);
+res
+```
+
++ Reduce
+
+```{node}
+var add = (x, y) => x + y;
+res.reduce(add)
+```
+
+
 + Finding the first element
 
 ```{node}

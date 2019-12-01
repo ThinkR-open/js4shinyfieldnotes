@@ -456,6 +456,20 @@ x[<span class="dv">0</span>] <span class="op">=</span> <span class="st">&quot;pl
 </blockquote>
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="va">x</span>.<span class="at">map</span>(z <span class="op">=&gt;</span> <span class="va">z</span>.<span class="at">toUpperCase</span>())<span class="op">;</span></code></pre>
 <pre><code># [ &#39;PLOP&#39;, &#39;PLOP&#39; ]</code></pre>
+<p>Example, extracted from <a href="https://colinfay.me/aoc-2019-01/" class="uri">https://colinfay.me/aoc-2019-01/</a></p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> res <span class="op">=</span> [<span class="dv">105311</span><span class="op">,</span> <span class="dv">117290</span><span class="op">,</span> <span class="dv">97762</span><span class="op">,</span> <span class="dv">124678</span><span class="op">,</span> <span class="dv">132753</span><span class="op">,</span> <span class="dv">114635</span>]<span class="op">;</span>
+<span class="kw">var</span> res <span class="op">=</span> <span class="va">res</span>.<span class="at">map</span>(x <span class="op">=&gt;</span> <span class="va">Math</span>.<span class="at">floor</span>(x / <span class="dv">3</span>) <span class="op">-</span> <span class="dv">2</span>)<span class="op">;</span>
+res</code></pre>
+<pre><code># undefined
+# undefined
+# [ 35101, 39094, 32585, 41557, 44249, 38209 ]</code></pre>
+<ul>
+<li>Reduce</li>
+</ul>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> add <span class="op">=</span> (x<span class="op">,</span> y) <span class="op">=&gt;</span> x <span class="op">+</span> y<span class="op">;</span>
+<span class="va">res</span>.<span class="at">reduce</span>(add)</code></pre>
+<pre><code># undefined
+# 230795</code></pre>
 <ul>
 <li>Finding the first element</li>
 </ul>
